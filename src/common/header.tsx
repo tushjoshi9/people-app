@@ -11,9 +11,11 @@ import {
   PopoverContent,
   PopoverTrigger,
 } from "@chakra-ui/popover";
+import { useStorage } from "./storage";
 
 export const Header = () => {
   const { colorMode, toggleColorMode } = useColorMode();
+  const { setAPIStore } = useStorage();
   return (
     <Flex
       as="nav"
@@ -48,7 +50,9 @@ export const Header = () => {
               <Text color={`mode.${colorMode}.text`} mb={5}>
                 Welcome, <strong>Debby Powers</strong>!
               </Text>
-              <Button colorScheme="blue" size="sm">
+              <Button colorScheme="blue" size="sm" onClick={() => {
+                setAPIStore({ username: "" })
+              }}>
                 Log out
               </Button>
             </PopoverBody>

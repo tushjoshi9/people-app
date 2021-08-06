@@ -8,16 +8,16 @@ import { navigate } from "@reach/router";
 function App() {
 
   const { apiStore } = useStorage();
+  const isUserLoggedIn = apiStore?.username ?? "";
 
   console.log(apiStore, "apis")
 
-  if (apiStore?.username) {
+  if (isUserLoggedIn) {
     navigate("/home")
   } else {
     navigate("/login")
   }
 
-  const isUserLoggedIn = Object.keys(apiStore).length !== 0
 
   return isUserLoggedIn ? <Box >
     <Header />
