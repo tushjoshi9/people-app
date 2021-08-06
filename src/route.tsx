@@ -30,7 +30,7 @@ export default function Route() {
 			>
 				<Router>
 					<Login path="/login" />
-					<Home path="/" />
+					<Home path="/home" />
 				</Router>
 			</Suspense>
 		</Box>

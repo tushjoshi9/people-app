@@ -1,5 +1,5 @@
 import { Link as ReachLink } from "@reach/router";
-import { Heading, Flex, Stack, Text } from "@chakra-ui/layout";
+import { Flex, Stack, Text, Box } from "@chakra-ui/layout";
 import { useColorMode } from "@chakra-ui/color-mode";
 import { Button } from "@chakra-ui/button";
 import { MoonIcon, SunIcon } from "@chakra-ui/icons";
@@ -22,20 +22,27 @@ export const Header = () => {
       align="center"
       justify="space-between"
       wrap="wrap"
-      p={5}
+      p={0}
       pl={10}
       pr={10}
-      bg={window.location.href.includes("checkout") ? "teal.400" : "blue.500"}
+      bgColor={"purple.700"}
       color="white"
       top={0}
       zIndex={2}
+      position="sticky"
     >
       <Flex align="center">
-        <Heading as="h1" size="xl" position="relative">
-          <ReachLink to="/">
-            People Dashboard
-          </ReachLink>
-        </Heading>
+        <Box textAlign="center" mb="5px">
+          <Text color={`mode.${colorMode}.white`} textTransform="uppercase" fontWeight="extrabold" fontSize="1.7em" fontStyle="italic" display="flex" alignItems="center" justifyContent="center">
+            <ReachLink to="/home"><span style={{
+              fontSize: "1.7em",
+              top: "4px",
+              right: "-4px",
+              position: "relative"
+            }}>P</span> eople
+            </ReachLink>
+          </Text>
+        </Box>
       </Flex>
       <Stack direction="row" spacing={4} alignItems="center">
         <Popover placement="top">
