@@ -1,26 +1,28 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { Header } from "./common/header";
+import { Footer } from "./common/footer";
+import Route from "./route"
+import { Box, Flex } from '@chakra-ui/react';
+import { useStorage } from "./common/storage";
+import { navigate } from "@reach/router";
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
 
+  const { apiStore } = useStorage();
+
+  console.log(apiStore, "apis")
+
+  if (apiStore?.username) {
+    navigate("/home")
+  } else {
+    navigate("/login")
+  }
+
+  const isUserLoggedIn = Object.keys(apiStore).length !== 0
+
+  return isUserLoggedIn ? <Box >
+    <Header />
+    <Route />
+    <Footer />
+  </Box> : <Flex><Route /></Flex>
+}
 export default App;
