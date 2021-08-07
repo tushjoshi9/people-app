@@ -39,9 +39,9 @@ const Home: RouteComponentProps & any = () => {
     pl={[5, 10]}
     pr={[5, 10]}
     mt={10}><Heading mb={6} fontSize="1.8em">Welcome to People's Dashboard!</Heading>
-    <Grid templateColumns="repeat( auto-fit, minmax(280px, 1fr) )" gap={6} mb={6}>
+    <Grid templateColumns="repeat( auto-fit, minmax(350px, 1fr) )" gap={6} mb={6}>
       {list.map((item: any) =>
-        <Box maxW="sm" borderWidth="1px" borderRadius="lg" overflow="hidden" key={item} className="animated-card">
+        <Box maxW="md" borderWidth="1px" borderRadius="lg" overflow="hidden" key={item} className="animated-card">
           <Image src={property.imageUrl} alt={property.imageAlt} />
           <Box p="6">
             <Box d="flex" alignItems="baseline">
