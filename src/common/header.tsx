@@ -56,7 +56,7 @@ export const Header = () => {
               <PopoverArrow />
               <PopoverBody>
                 <Text color={`mode.${colorMode}.text`} mb={5}>
-                  Welcome, <strong>Debby Powers</strong>!
+                  Welcome, <strong>Foo Johnson</strong>!
                 </Text>
                 <Button colorScheme="blue" size="sm" onClick={() => {
                   setAPIStore({ username: "" })

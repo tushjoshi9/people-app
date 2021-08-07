@@ -7,7 +7,7 @@ type ContextProps = {
 };
 
 export const appConstants = {
-  API_STORAGE: "ce-local-api-store",
+  API_STORAGE: "people-local-api-store",
 };
 
 export let reducer = (info: any, newInfo: any) => {
@@ -18,7 +18,7 @@ export let reducer = (info: any, newInfo: any) => {
   return { ...info, ...newInfo };
 };
 
-export const ceAPIStore = JSON.parse(
+export const peopleAPIStore = JSON.parse(
   localStorage.getItem(appConstants.API_STORAGE) as any
 );
 const StorageContext = React.createContext({} as ContextProps);
@@ -31,13 +31,12 @@ export const useStorage = () => {
 export function StorageProvider(props: any) {
   const [apiStore, setAPIStore] = useReducer(
     reducer,
-    ceAPIStore || ({} as any)
+    peopleAPIStore || ({} as any)
   );
 
   useEffect(() => {
     localStorage.setItem(appConstants.API_STORAGE, JSON.stringify(apiStore));
   }, [apiStore]);
-
 
   return (
     <StorageContext.Provider
