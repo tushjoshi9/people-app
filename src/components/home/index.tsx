@@ -1,7 +1,7 @@
 import { RouteComponentProps } from "@reach/router";
 import { useEffect, useRef, useState } from "react";
 import { Box, Skeleton, SkeletonText, Badge, Image, Grid, Heading } from "@chakra-ui/react";
-import { StarIcon } from "@chakra-ui/icons"
+import { StarIcon, TriangleUpIcon } from "@chakra-ui/icons"
 import { useWindowDimensions } from "../getDimensions";
 import VacayImage from "../../assets/img/vacay.jpg"
 
@@ -99,6 +99,9 @@ const Home: RouteComponentProps & any = () => {
         </Box>
       )}
     </Grid>
+    <Box cursor="pointer" onClick={() => window.scrollTo(0, 0)} bgColor="white" boxShadow="0 0 5px 5px #eeeeee" border="1px #eeeeee solid" borderRadius="100%" w="50px" h="50px" position="fixed" right="30px" bottom="50px" justifyContent="center" display="flex" alignItems="center">
+      <TriangleUpIcon color="purple" />
+    </Box>
   </Box >
 }
 
