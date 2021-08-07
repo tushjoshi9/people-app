@@ -64,12 +64,12 @@ const Login: RouteComponentProps & any = () => {
           }}>P</span> eople
         </Text>
       </Box>
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit} data-testid="loginform">
         <FormControl id="username" isRequired mb="20px">
-          <Input type="text" placeholder="Enter Username" p="20px 15px" value={formDetails.username} onChange={e => setFormDetails({ ...formDetails, username: e.target.value })} />
+          <Input type="text" placeholder="Enter Username" data-testid="username" p="20px 15px" value={formDetails.username} onChange={e => setFormDetails({ ...formDetails, username: e.target.value })} />
         </FormControl >
         <FormControl id="password" isRequired mb="10px">
-          <Input type="password" placeholder="Enter Password" p="20px 15px" value={formDetails.password} onChange={e => setFormDetails({ ...formDetails, password: e.target.value })} />
+          <Input type="password" placeholder="Enter Password" data-testid="password" p="20px 15px" value={formDetails.password} onChange={e => setFormDetails({ ...formDetails, password: e.target.value })} />
         </FormControl >
         <Button
           mt={4}
@@ -77,6 +77,7 @@ const Login: RouteComponentProps & any = () => {
           colorScheme="purple"
           fontWeight="light"
           type="submit"
+          data-testid="loginsubmit"
         >
           Login
         </Button>

@@ -45,35 +45,37 @@ export const Header = () => {
         </Box>
       </Flex>
       <Stack direction="row" spacing={4} alignItems="center">
-        <Popover placement="top">
-          <PopoverTrigger>
-            <Avatar size="sm">
-              <AvatarBadge boxSize="1em" bg="green.500" />
-            </Avatar>
-          </PopoverTrigger>
-          <PopoverContent w={250}>
-            <PopoverArrow />
-            <PopoverBody>
-              <Text color={`mode.${colorMode}.text`} mb={5}>
-                Welcome, <strong>Debby Powers</strong>!
-              </Text>
-              <Button colorScheme="blue" size="sm" onClick={() => {
-                setAPIStore({ username: "" })
-              }}>
-                Log out
-              </Button>
-            </PopoverBody>
-          </PopoverContent>
-        </Popover>
+        <span data-testid="profile">
+          <Popover placement="top">
+            <PopoverTrigger>
+              <Avatar size="sm">
+                <AvatarBadge boxSize="1em" bg="green.500" />
+              </Avatar>
+            </PopoverTrigger>
+            <PopoverContent w={250}>
+              <PopoverArrow />
+              <PopoverBody>
+                <Text color={`mode.${colorMode}.text`} mb={5}>
+                  Welcome, <strong>Debby Powers</strong>!
+                </Text>
+                <Button colorScheme="blue" size="sm" onClick={() => {
+                  setAPIStore({ username: "" })
+                }}>
+                  Log out
+                </Button>
+              </PopoverBody>
+            </PopoverContent>
+          </Popover>
+        </span>
         <Button
           aria-label="Light/Dark mode"
           onClick={toggleColorMode}
           bg="transparent"
         >
           {colorMode === "light" ? (
-            <MoonIcon boxSize={6} />
+            <MoonIcon boxSize={6} data-testid="lighttheme" />
           ) : (
-            <SunIcon boxSize={6} />
+            <SunIcon boxSize={6} data-testid="darktheme" />
           )}
         </Button>
       </Stack>

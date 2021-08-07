@@ -92,14 +92,14 @@ const Home: RouteComponentProps & any = () => {
         </Box>)}
     </Grid>
     <Grid templateColumns="repeat(auto-fit, minmax(280px, 1fr))" gap={6} mb={6}>
-      {Array(width < 600 ? 1 : noOfItems).fill("").map(_ =>
-        <Box boxShadow="lg" bg="white" ref={ref} border="1px #eee solid" borderRadius="10px">
+      {Array(width < 600 ? 1 : noOfItems).fill("").map((_, i) =>
+        <Box boxShadow="lg" bg="white" ref={ref} border="1px #eee solid" borderRadius="10px" key={"skeleton" + i}>
           <Skeleton height="180" />
           <SkeletonText padding="6" mt="4" noOfLines={3} spacing="4" />
         </Box>
       )}
     </Grid>
-  </Box>
+  </Box >
 }
 
 export default Home;
