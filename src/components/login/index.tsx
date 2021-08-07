@@ -54,8 +54,8 @@ const Login: RouteComponentProps & any = () => {
     }
   }
 
-  return <Flex h="100vh" alignItems="center" backgroundColor="purple.800">
-    <Box w="40%" m="20px auto" p="6" borderRadius="4px" backgroundColor="white">
+  return <Flex h="100vh" alignItems="center" bgColor={colorMode === "light" ? "purple.800" : "purple.900"}>
+    <Box w="35%" m="20px auto" p="6" borderRadius="4px" minW="300px" bgColor={colorMode === "light" ? "white" : "whiteAlpha.300"}>
       <Box textAlign="center" mb="5px">
         <Text color={`mode.${colorMode}.logintitle`} textTransform="uppercase" fontWeight="extrabold" fontSize="1.7em" fontStyle="italic" display="flex" alignItems="center" justifyContent="center">
           <span style={{

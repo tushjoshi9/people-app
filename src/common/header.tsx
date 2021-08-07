@@ -23,8 +23,8 @@ export const Header = () => {
       justify="space-between"
       wrap="wrap"
       p={0}
-      pl={10}
-      pr={10}
+      pl={[5, 10]}
+      pr={[5, 10]}
       bgColor={"purple.700"}
       color="white"
       top={0}

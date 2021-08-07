@@ -2,30 +2,30 @@ import { RouteComponentProps } from "@reach/router";
 import { useEffect, useRef, useState } from "react";
 import { Box, Skeleton, SkeletonText, Badge, Image, Grid, Heading } from "@chakra-ui/react";
 import { StarIcon } from "@chakra-ui/icons"
+import { useWindowDimensions } from "../getDimensions";
+import VacayImage from "../../assets/img/vacay.jpg"
 
-
-const createArray = (n: number) => Array.from({ length: n }, (_, i) => i + 1)
+const createArray = (n: number): any => Array.from({ length: n }, (_, i) => i + 1);
 
 const Home: RouteComponentProps & any = () => {
-  const [list, setList] = useState(createArray(3));
+  const { width, noOfItems } = useWindowDimensions();
+  const [list, setList] = useState(createArray(noOfItems));
   const [pageCount, setPageCount] = useState(1);
   const ref = useRef(null);
-
   useEffect(() => {
     const observer = new IntersectionObserver(element => element[0].isIntersecting ? setPageCount(pageCount => pageCount + 1) : null,
-      { threshold: 1 });
+    );
     if (ref.current) {
       observer.observe(ref.current as any);
     }
   }, [])
   useEffect(() => {
-
     setTimeout(() =>
-      setList(createArray(pageCount * 3)), 1000);
-  }, [pageCount]);
+      setList(createArray(pageCount * (noOfItems * 2))), 500);
+  }, [pageCount, noOfItems]);
 
   const property = {
-    imageUrl: "https://bit.ly/2Z4KKcF",
+    imageUrl: VacayImage,
     imageAlt: "Rear view of modern home with pool",
     beds: 3,
     baths: 2,
@@ -35,14 +35,13 @@ const Home: RouteComponentProps & any = () => {
     rating: 4,
   }
 
-  return <div style={{
-    padding: "20px"
-  }}><Heading mb={10}>
-      Welcome to People Dashboard!
-    </Heading>
-    <Grid templateColumns="repeat( auto-fit, minmax(300px, 1fr) )" gap={6} mb={6}>
-      {list.map(item =>
-        <Box maxW="sm" borderWidth="1px" borderRadius="lg" overflow="hidden" key={item}>
+  return <Box
+    pl={[5, 10]}
+    pr={[5, 10]}
+    mt={10}><Heading mb={6} fontSize="1.8em">Welcome to People's Dashboard!</Heading>
+    <Grid templateColumns="repeat( auto-fit, minmax(280px, 1fr) )" gap={6} mb={6}>
+      {list.map((item: any) =>
+        <Box maxW="sm" borderWidth="1px" borderRadius="lg" overflow="hidden" key={item} className="animated-card">
           <Image src={property.imageUrl} alt={property.imageAlt} />
           <Box p="6">
             <Box d="flex" alignItems="baseline">
@@ -92,16 +91,15 @@ const Home: RouteComponentProps & any = () => {
           </Box>
         </Box>)}
     </Grid>
-    <Grid templateColumns="repeat( auto-fit, minmax(300px, 1fr) )" gap={6}>
-      {Array(3).fill("").map(_ =>
+    <Grid templateColumns="repeat(auto-fit, minmax(280px, 1fr))" gap={6} mb={6}>
+      {Array(width < 600 ? 1 : noOfItems).fill("").map(_ =>
         <Box boxShadow="lg" bg="white" ref={ref} border="1px #eee solid" borderRadius="10px">
           <Skeleton height="180" />
           <SkeletonText padding="6" mt="4" noOfLines={3} spacing="4" />
         </Box>
       )}
     </Grid>
-
-  </div>
+  </Box>
 }
 
 export default Home;

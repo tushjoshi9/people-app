@@ -10,8 +10,6 @@ function App() {
   const { apiStore } = useStorage();
   const isUserLoggedIn = apiStore?.username ?? "";
 
-  console.log(apiStore, "apis")
-
   if (isUserLoggedIn) {
     navigate("/home")
   } else {

@@ -22,7 +22,7 @@ export default function Route() {
 							thickness="4px"
 							speed="0.65s"
 							emptyColor="gray.200"
-							color="teal.500"
+							color="purple.700"
 							size="xl"
 						/>
 					</Flex>

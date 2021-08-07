@@ -20,7 +20,7 @@ const customColors = {
       heading: "#fff",
       icon: "#486581",
       link: "#F8CCFF",
-      logintitle: "#B794F4"
+      logintitle: "#ffffff"
     },
   },
 };
